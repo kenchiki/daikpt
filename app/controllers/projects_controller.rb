@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  def index
+    @projects = current_user.projects.order(id: :desc)
+  end
   def new
     @project = current_user.projects.build
   end
