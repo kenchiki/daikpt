@@ -4,6 +4,8 @@ class KptsController < ApplicationController
   def new
     @kpt = @project.kpts.build
     @kpt.keep_things.build
+    @problems = @kpt.problem_things.build
+    @problems.try_things.build
   end
 
   def create
@@ -18,7 +20,10 @@ class KptsController < ApplicationController
   private
 
   def kpt_params
-    params.require(:kpt).permit(:target_on, :description, keep_things_attributes: [:id, :_destroy, :content])
+    params.require(:kpt).permit(
+      :target_on, :description,
+      keep_things_attributes: [:id, :_destroy, :content],
+      problem_things_attributes: [:id, :_destroy, :content, try_things_attributes: [:id, :_destroy, :content]])
   end
 
   def set_project

@@ -1,0 +1,6 @@
+.nested_fields.mb-3{ style: 'overflow: hidden'}
+  = f.input :content, label: false
+  = link_to_remove_association "削除", f, class: 'btn btn-danger float-right'
+.div{ style: 'width: 80%;float: right'}
+  = f.simple_fields_for :try_things do |try_thing|
+    = render 'try_thing_fields', f: try_thing
