@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_092858) do
+ActiveRecord::Schema.define(version: 2019_03_24_094312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "kpts", force: :cascade do |t|
+    t.date "target_on", null: false
+    t.text "description"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_kpts_on_project_id"
+  end
 
   create_table "project_memberships", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -43,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_092858) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "kpts", "projects"
   add_foreign_key "project_memberships", "projects"
   add_foreign_key "project_memberships", "users"
 end

@@ -1,0 +1,5 @@
+%h1.h3
+  = simple_form_for [@project, @kpt] do |f|
+    = f.input :target_on
+    = f.input :description
+    = f.button :submit, class: 'btn btn-primary'
