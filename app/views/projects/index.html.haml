@@ -1,3 +1,17 @@
-- @projects.each do |project|
-  = project.name
-  = link_to 'ふりかえり', new_project_kpt_path(project)
+%table.table.table-striped
+  %thead.thead-dark
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} プロジェクト名
+      %th{:scope => "col"} 最終更新日
+      %th.text-center{:scope => "col"} 操作
+  %tbody
+
+    - @projects.each do |project|
+      %tr
+        %th{:scope => "row"} 1
+        %td= project.name
+        %td
+          = project.kpts.last.created_at
+        %td.text-center
+          = link_to 'ふりかえり開始', new_project_kpt_path(project), class: 'btn btn-outline-primary'

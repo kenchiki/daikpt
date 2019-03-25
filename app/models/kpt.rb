@@ -1,8 +1,8 @@
 class Kpt < ApplicationRecord
-  has_many :keep_things
-  has_many :problem_things
-  has_many :try_things
-  belongs_to :project
+  has_many :keep_things, inverse_of: :kpt
+  has_many :problem_things, inverse_of: :kpt
+  # has_many :try_things, inverse_of: :kpt
   accepts_nested_attributes_for :keep_things, allow_destroy: true
   accepts_nested_attributes_for :problem_things, allow_destroy: true
+  belongs_to :project
 end
