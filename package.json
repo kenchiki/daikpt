@@ -2,6 +2,7 @@
   "name": "daikpt",
   "private": true,
   "dependencies": {
+    "autosize": "^4.0.2",
     "jquery": "^3.3.1"
   }
 }

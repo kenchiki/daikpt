@@ -15,4 +15,6 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require cocoon
+//= require autosize/dist/autosize
+//= reuqire textAreaAutoSize
 //= require_tree .
