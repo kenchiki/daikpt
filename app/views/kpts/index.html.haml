@@ -1,26 +1,30 @@
-- @kpts.each do |kpt|
-  .col-lg-10.offset-lg-1.mb-3
-    .card
-      .card-body
-        %h5.card-title= kpt.target_on.strftime('%Y年%m月%d日')
-        %table.table.table-bordered
-          %tr.table-success
-            %th Keep
-          - kpt.keep_things.each do |keep_thing|
-            %tr
-              %td
-                = keep_thing.content
-        %table.table.table-bordered
-          %tr.table-danger
-            %th Problem
-            - kpt.problem_things.each do |problem_thing|
+- if @kpts.blank?
+  .alert.alert-warning
+    ふりかえりがありません
+- else
+  - @kpts.each do |kpt|
+    .col-lg-10.offset-lg-1.mb-3
+      .card
+        .card-body
+          %h5.card-title= kpt.target_on.strftime('%Y年%m月%d日')
+          %table.table.table-bordered
+            %tr.table-success
+              %th Keep
+            - kpt.keep_things.each do |keep_thing|
               %tr
-                %td= problem_thing.content
-              %tr
-                - problem_thing.try_things.each do |try_thing|
-                  %td
-                    %span.badge.badge-primary.mr-3
-                      Try
-                    %p.font-weight-bold.d-inline
-                      = try_thing.content
-        = simple_format kpt.description, class: 'card-text'
+                %td
+                  = keep_thing.content
+          %table.table.table-bordered
+            %tr.table-danger
+              %th Problem
+              - kpt.problem_things.each do |problem_thing|
+                %tr
+                  %td= problem_thing.content
+                %tr
+                  - problem_thing.try_things.each do |try_thing|
+                    %td
+                      %span.badge.badge-primary.mr-3
+                        Try
+                      %p.font-weight-bold.d-inline
+                        = try_thing.content
+          = simple_format kpt.description, class: 'card-text'
