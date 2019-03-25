@@ -11,5 +11,7 @@
             %span.badge.badge-warning.mr-3
               実施中
           = keep_thing.content
+          %p.d-inline.float-right
+            = keep_thing.created_at.strftime('%Y年%m月%d日')
 
 
