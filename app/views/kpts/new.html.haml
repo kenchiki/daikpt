@@ -1,12 +1,12 @@
 %h1.page-header
   ふりかえり
-
-%table.table.table-bordered.mb-5
-  %tr.table-primary
-    %th 前回のTry
-    - @last_try_things.flatten.each do |try_thing|
-      %tr
-        %td= try_thing.content
+- if @last_try_things.present?
+  %table.table.table-bordered.mb-5
+    %tr.table-primary
+      %th 前回のTry
+      - @last_try_things.flatten.each do |try_thing|
+        %tr
+          %td= try_thing.content
 = simple_form_for [@project, @kpt] do |f|
   = f.input :target_on
   .card.p-3.mb-3
