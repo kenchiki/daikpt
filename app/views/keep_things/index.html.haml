@@ -1,0 +1,15 @@
+%table.table.table-bordered
+  %tr.table-success
+    %th Keep
+    - @keep_things.each do |keep_thing|
+      %tr
+        %td
+          - if keep_thing.complete?
+            %span.badge.badge-info.mr-3
+              習慣化
+          - else
+            %span.badge.badge-warning.mr-3
+              実施中
+          = keep_thing.content
+
+

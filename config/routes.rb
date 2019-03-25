@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :projects do
     resources :kpts
   end
+  resources :keep_things, only: %i(index)
 end
