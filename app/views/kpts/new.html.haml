@@ -4,7 +4,7 @@
   %table.table.table-bordered.mb-5
     %tr.table-primary
       %th 前回のTry
-      - @last_try_things.flatten.each do |try_thing|
+      - @last_try_things.each do |try_thing|
         %tr
           %td= try_thing.content
 = simple_form_for [@project, @kpt] do |f|

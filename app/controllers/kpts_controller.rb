@@ -8,9 +8,7 @@ class KptsController < ApplicationController
   def new
     @last_try_things = @project.kpts.last&.try_things
     @kpt = @project.kpts.build
-    @kpt.keep_things.build
-    problems = @kpt.problem_things.build
-    problems.try_things.build
+    @kpt.build_relation_things
   end
 
   def create
