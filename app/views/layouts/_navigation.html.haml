@@ -5,6 +5,8 @@
       メニュー
     .dropdown-menu.dropdown-menu-right
       %button.dropdown-item{:type => "button"}
+        = link_to 'プロジェクト作成', new_project_path
+      %button.dropdown-item{:type => "button"}
         = link_to 'プロジェクト一覧', projects_path
       %button.dropdown-item{:type => "button"}
         = link_to 'Keep一覧', keep_things_path
