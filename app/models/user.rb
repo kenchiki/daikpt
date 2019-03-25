@@ -9,4 +9,8 @@ class User < ApplicationRecord
   scope :keep_things, -> () {
     left_joins(projects: [kpts: :keep_things]).select("keep_things.*")
   }
+
+  scope :try_things, -> () {
+    left_joins(projects: [kpts: [problem_things: :try_things]]).select("try_things.*")
+  }
 end

@@ -1,3 +1,13 @@
 %nav.navbar.navbar-dark.bg-dark
   %span.text-white
     DAIKPT
+  .btn-group.mr-5
+    %button.btn.btn-outline-primary.btn-sm.pr-3.pl-3.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      メニュー
+    .dropdown-menu.dropdown-menu-right
+      %button.dropdown-item{:type => "button"}
+        = link_to 'プロジェクト一覧', projects_path
+      %button.dropdown-item{:type => "button"}
+        = link_to 'Keep一覧', keep_things_path
+      %button.dropdown-item{:type => "button"}
+        = link_to 'Try一覧', try_things_path

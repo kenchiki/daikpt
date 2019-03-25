@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :kpts
   end
   resources :keep_things, only: %i(index)
+  resources :try_things, only: %i(index)
 end
