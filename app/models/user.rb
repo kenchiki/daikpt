@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :project_memberships, dependent: :destroy
   has_many :projects, through: :project_memberships
+
+  scope :keep_things, -> () {
+    left_joins(projects: [kpts: :keep_things]).select("keep_things.*")
+  }
 end
