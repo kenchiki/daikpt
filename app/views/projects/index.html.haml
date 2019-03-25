@@ -10,7 +10,7 @@
     - @projects.each do |project|
       %tr
         %th{:scope => "row"} 1
-        %td= project.name
+        %td= link_to project.name, project_kpts_path(project)
         %td
           = project.kpts.last.created_at
         %td.text-center
