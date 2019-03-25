@@ -1,3 +1,4 @@
+= @kpt.errors.full_messages.first
 %h1.h3
   = simple_form_for [@project, @kpt], class: 'hgoe' do |f|
     = f.input :target_on
@@ -14,6 +15,8 @@
       = f.simple_fields_for :problem_things do |problem_thing|
         = render 'problem_thing_fields', f: problem_thing
       .links
-        = link_to_add_association 'P追加', f, :problem_things, class: 'btn btn-info js-insert-problem-thing', data: { 'data-association-insertion-method': 'append'}
+        = link_to_add_association 'P追加', f,
+        :problem_things,
+        class: 'btn btn-info'
     = f.input :description
     = f.button :submit, class: 'btn btn-primary'

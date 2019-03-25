@@ -58,11 +58,9 @@ ActiveRecord::Schema.define(version: 2019_03_24_111203) do
 
   create_table "try_things", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "kpt_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "problem_thing_id"
-    t.index ["kpt_id"], name: "index_try_things_on_kpt_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,5 +81,4 @@ ActiveRecord::Schema.define(version: 2019_03_24_111203) do
   add_foreign_key "problem_things", "kpts"
   add_foreign_key "project_memberships", "projects"
   add_foreign_key "project_memberships", "users"
-  add_foreign_key "try_things", "kpts"
 end

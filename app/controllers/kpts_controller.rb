@@ -1,6 +1,10 @@
 class KptsController < ApplicationController
   before_action :set_project
 
+  def index
+    @kpts = @project.kpts.order(id: :desc)
+  end
+
   def new
     @kpt = @project.kpts.build
     @kpt.keep_things.build

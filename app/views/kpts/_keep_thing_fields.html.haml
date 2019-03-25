@@ -1,3 +1,9 @@
 .nested_fields.mb-3
-  = f.input :content, as: :string, label: false
-  = link_to_remove_association "削除", f, class: 'btn btn-danger'
+  .form-inline
+    = f.input :content, as: :string, label: false, wrapper_html: { class: 'form-inline keep-things__input-wrapper' }, input_html: { class: 'keep-things__input' }
+    = link_to_remove_association "削除", f, class: 'btn btn-danger'
+:sass
+  .keep-things__input-wrapper
+    width: 100%
+  .keep-things__input
+    width: 90% !important
