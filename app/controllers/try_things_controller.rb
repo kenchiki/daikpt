@@ -1,5 +1,5 @@
 class TryThingsController < ApplicationController
   def index
-    @try_things = User.try_things.where(id: current_user.id)
+    @try_things = current_user.try_things.order(id: :desc)
   end
 end
