@@ -1,21 +1,27 @@
-%h1.h3
-  = simple_form_for [@project, @kpt] do |f|
-    = f.input :target_on
-    .card.p-3.mb-3
-      %h2.h3
-        Keep
-      = f.simple_fields_for :keep_things do |keep_thing|
-        = render 'keep_thing_fields', f: keep_thing
-        .links
-          = link_to_add_association 'K追加', f, :keep_things, class: 'btn btn-info'
-    .card.p-3.mb-3.js-problem
-      %h2.h3
-        Problem
-      = f.simple_fields_for :problem_things do |problem_thing|
-        = render 'problem_thing_fields', f: problem_thing
+%h1.page-header
+  ふりかえり
+
+%table.table.table-bordered.mb-5
+  %tr.table-primary
+    %th 前回のTry
+    - @last_try_things.flatten.each do |try_thing|
+      %tr
+        %td= try_thing.content
+= simple_form_for [@project, @kpt] do |f|
+  = f.input :target_on
+  .card.p-3.mb-3
+    %h2.h3
+      Keep
+    = f.simple_fields_for :keep_things do |keep_thing|
+      = render 'keep_thing_fields', f: keep_thing
       .links
-        = link_to_add_association 'P追加', f,
-        :problem_things,
-        class: 'btn btn-info'
-    = f.input :description
-    = f.button :submit, class: 'btn btn-primary'
+        = link_to_add_association '+', f, :keep_things, class: 'btn btn-info'
+  .card.p-3.mb-3.js-problem
+    = f.simple_fields_for :problem_things do |problem_thing|
+      = render 'problem_thing_fields', f: problem_thing
+    .links
+      = link_to_add_association '+', f,
+      :problem_things,
+      class: 'btn btn-info'
+  = f.input :description
+  = f.button :submit, class: 'btn btn-primary'

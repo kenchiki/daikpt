@@ -6,6 +6,7 @@ class KptsController < ApplicationController
   end
 
   def new
+    @last_try_things = @project.kpts.last.problem_things.map(&:try_things)
     @kpt = @project.kpts.build
     @kpt.keep_things.build
     @problems = @kpt.problem_things.build
@@ -15,7 +16,7 @@ class KptsController < ApplicationController
   def create
     @kpt = @project.kpts.build(kpt_params)
     if @kpt.save
-      redirect_to root_url
+      redirect_to project_kpt_path(@project)
     else
       render :new
     end
