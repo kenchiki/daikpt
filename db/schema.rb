@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_111203) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "problem_thing_id"
+    t.bigint "problem_thing_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
