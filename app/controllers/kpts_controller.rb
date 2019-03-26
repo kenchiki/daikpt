@@ -14,7 +14,7 @@ class KptsController < ApplicationController
   def create
     @kpt = @project.kpts.build(kpt_params)
     if @kpt.save
-      redirect_to project_kpt_path(@project)
+      redirect_to project_kpts_path(@project)
     else
       render :new
     end
