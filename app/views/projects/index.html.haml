@@ -4,6 +4,7 @@
   .alert.alert-warning
     所属プロジェクトがありません
   .jumbotron.text-center
+    = image_tag '/images/top_main.png'
     %p プロジェクトを作成して、ふりかえりをしましょう！
     = link_to 'プロジェクト新規作成', new_project_path, class: 'btn btn-primary'
 - else
