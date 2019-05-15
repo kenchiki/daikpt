@@ -17,6 +17,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
 gem 'cocoon'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
