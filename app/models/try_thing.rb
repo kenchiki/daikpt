@@ -4,7 +4,7 @@ class TryThing < ApplicationRecord
   validates :content, presence: true
 
   def create_keep_things_from_try_thing!
-    transaction do
+    ActiveRecord::Base.transaction do
       KeepThing.create!(content: content, kpt: problem_thing.kpt)
       self.update!(complete: true)
     end
