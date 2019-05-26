@@ -23,6 +23,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'binding_of_caller'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -36,9 +38,9 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'chromedriver-helper'
   gem 'spring-commands-rspec'
 end

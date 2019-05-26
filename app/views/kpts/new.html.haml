@@ -16,13 +16,13 @@
     = f.simple_fields_for :keep_things do |keep_thing|
       = render 'keep_thing_fields', f: keep_thing
       .links
-        = link_to_add_association '+', f, :keep_things, class: 'btn btn-info'
+        = link_to_add_association '+', f, :keep_things, class: 'btn btn-info spec__add-keep-things'
   .card.p-3.mb-3.js-problem
     = f.simple_fields_for :problem_things do |problem_thing|
       = render 'problem_thing_fields', f: problem_thing
     .links
       = link_to_add_association '+', f,
       :problem_things,
-      class: 'btn btn-info'
+      class: 'btn btn-info spec__add-problem-things'
   = f.input :description
   = f.button :submit, class: 'btn btn-primary'
