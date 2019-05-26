@@ -1,0 +1,4 @@
+var targetElement = $(".js-btn-change-keep[data-try-id='<%= @try_thing.id %>']")
+targetElement.removeClass('btn-outline-success')
+targetElement.addClass('disabled btn-outline-secondary')
+targetElement.text('Keep済み')

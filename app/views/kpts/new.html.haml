@@ -8,6 +8,16 @@
         %tr
           %td
             = try_thing.content
+            - if try_thing.complete?
+              %span.btn.btn-sm.btn-outline-secondary.disabled.float-right
+                Keep済み
+            - else
+              = link_to 'Keepにする',
+                        try_thing_path(try_thing),
+                        method: :patch,
+                        class: 'btn btn-sm btn-outline-success float-right js-btn-change-keep',
+                        remote: true,
+                        data: { try_id: try_thing.id, confirm: 'Keepにしますか？' }
 = simple_form_for [@project, @kpt] do |f|
   = f.input :target_on
   .card.p-3.mb-3
@@ -16,13 +26,13 @@
     = f.simple_fields_for :keep_things do |keep_thing|
       = render 'keep_thing_fields', f: keep_thing
       .links
-        = link_to_add_association '+', f, :keep_things, class: 'btn btn-info'
+        = link_to_add_association '+', f, :keep_things, class: 'btn btn-info spec__add-keep-things'
   .card.p-3.mb-3.js-problem
     = f.simple_fields_for :problem_things do |problem_thing|
       = render 'problem_thing_fields', f: problem_thing
     .links
       = link_to_add_association '+', f,
       :problem_things,
-      class: 'btn btn-info'
+      class: 'btn btn-info spec__add-problem-things'
   = f.input :description
   = f.button :submit, class: 'btn btn-primary'
