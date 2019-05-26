@@ -4,4 +4,8 @@ class Project < ApplicationRecord
   has_many :kpts, dependent: :destroy
 
   validates :name, presence: true
+
+  def last_kpt
+    kpts.order(created_at: :desc).last
+  end
 end

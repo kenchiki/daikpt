@@ -1,6 +1,6 @@
 class TryThingsController < ApplicationController
   def index
-    @try_things = current_user.try_things.order(id: :desc)
+    @try_things = current_user.try_things.order(created_at: :desc)
   end
 
   def update

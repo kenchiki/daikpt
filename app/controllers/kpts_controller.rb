@@ -6,7 +6,7 @@ class KptsController < ApplicationController
   end
 
   def new
-    @last_kpt = @project.kpts.last
+    @last_kpt = @project.last_kpt
     @kpt = @project.kpts.build
     @kpt.build_relation_things
   end
