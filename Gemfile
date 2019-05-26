@@ -44,5 +44,3 @@ group :test do
   gem 'chromedriver-helper'
   gem 'spring-commands-rspec'
 end
-
-
