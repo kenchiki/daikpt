@@ -12,3 +12,4 @@ feature 'Session' do
     end
   end
 end
+

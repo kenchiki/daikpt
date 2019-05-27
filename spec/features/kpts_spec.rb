@@ -24,20 +24,30 @@ feature 'Kpt' do
         click_on '登録する'
         expect(current_path).to eq project_kpts_path(project)
 
-        # FIXME: 本当はそれぞれがk・p・tの適切な場所に配置されているかも検証すべき
         expect(page).to have_selector 'h5', text: '2018年04月15日'
-        expect(page).to have_content '本番データを吹き飛ばした'
-        expect(page).to have_content '本番で作業するときは必ずペアオペする'
-        expect(page).to have_content '本番作業をする際はworldで@allをつける'
+        expect(page).to have_selector '.spec__keep-thing-content', text: '1日の終わりにdaikptを使う'
+        expect(page).to have_selector '.spec__problem-thing-content', text: '本番データを吹き飛ばした'
+        expect(page).to have_selector '.spec__try-thing-content', text: '本番で作業するときは必ずペアオペする'
+        expect(page).to have_selector '.spec__try-thing-content', text: '本番作業をする際はworldで@allをつける'
         expect(page).to have_content 'クビになるかと思った。ふりかえりして、メンタル立て直したい'
       end
     end
     context '2回目以降の場合' do
       let!(:kpt) { FactoryBot.create(:kpt, project: project) }
-      before { sign_in_as user }
-      it '前回のふりかえりが表示されること' do
+      let(:try_thing) { kpt.problem_things.first.try_things.first }
+      before do
+        sign_in_as user
         visit new_project_kpt_path(project)
+      end
+      it '前回のふりかえりが表示されること' do
         expect(page).to have_selector 'td', text: '本番で作業するときは@allメンションをつける'
+        expect(page).to have_content 'Keepにする'
+      end
+      it '前回のTryをkeepにできること', js: true do
+        click_on 'Keepにする'
+        page.driver.browser.switch_to.alert.accept
+        # TODO: 内容が追加されたかどうかを確認する必要がある
+        expect(page).to have_content 'Keep済み'
       end
     end
   end
