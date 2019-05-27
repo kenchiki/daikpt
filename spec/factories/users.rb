@@ -8,8 +8,8 @@ FactoryBot.define do
 
   trait :with_project do
     after(:create) do |user|
-      project = FactoryBot.create(:project)
-      FactoryBot.create(:project_membership, user: user, project: project)
+      project = create(:project)
+      create(:project_membership, user: user, project: project)
     end
   end
 end

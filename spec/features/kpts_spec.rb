@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Kpt' do
-  let(:user) { FactoryBot.create(:user, :with_project) }
+  let(:user) { create(:user, :with_project) }
   let(:project) { user.projects.first }
   feature 'ふりかえり作成' do
     before { sign_in_as user }
@@ -33,7 +33,7 @@ feature 'Kpt' do
       end
     end
     context '2回目以降の場合' do
-      let!(:kpt) { FactoryBot.create(:kpt, project: project) }
+      let!(:kpt) { create(:kpt, project: project) }
       let(:try_thing) { kpt.try_things.first }
       before do
         sign_in_as user

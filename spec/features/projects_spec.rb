@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Project' do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
   feature 'プロジェクト作成' do
     before do
       sign_in_as user

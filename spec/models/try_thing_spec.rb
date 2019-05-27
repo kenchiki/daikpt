@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe TryThing, type: :model do
   describe '#create_keep_things_from_try_thing!' do
-    let(:user) { FactoryBot.create(:user, :with_project) }
-    let!(:kpt) { FactoryBot.create(:kpt, project: user.projects.first)}
+    let(:user) { create(:user, :with_project) }
+    let!(:kpt) { create(:kpt, project: user.projects.first)}
     let(:problem_thing) { kpt.problem_things.first }
     let(:try_thing) { problem_thing.try_things.first }
     it 'TryからKeepが作成できること' do
