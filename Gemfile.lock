@@ -97,6 +97,10 @@ GEM
       devise (>= 4.6)
     diff-lcs (1.3)
     docile (1.3.1)
+    email_spec (2.2.0)
+      htmlentities (~> 4.3.3)
+      launchy (~> 2.1)
+      mail (~> 2.7)
     erubi (1.8.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -124,12 +128,17 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     http_accept_language (2.1.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     interception (0.5)
     io-like (0.3.0)
     json (2.2.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -301,9 +310,11 @@ DEPENDENCIES
   dekiru
   devise
   devise-i18n
+  email_spec
   factory_bot_rails
   faker
   haml-rails
+  letter_opener
   listen (>= 3.0.5, < 3.2)
   pg
   pry-rails

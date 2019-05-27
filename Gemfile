@@ -33,6 +33,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'letter_opener'
   gem 'rails-erd' # ER図生成
 end
 
@@ -45,4 +46,5 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'dekiru'
   gem 'simplecov' # テストガバレッジ計測
+  gem 'email_spec'
 end

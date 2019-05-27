@@ -7,6 +7,7 @@ require 'rspec/rails'
 require 'factory_bot'
 require 'dekiru/capybara/helpers'
 require 'simplecov'
+require 'email_spec'
 SimpleCov.start
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -21,4 +22,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Dekiru::Capybara::Helpers, type: :feature
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end
