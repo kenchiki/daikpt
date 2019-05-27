@@ -44,4 +44,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'spring-commands-rspec'
   gem 'dekiru'
+  gem 'simplecov' # テストガバレッジ計測
 end
