@@ -34,7 +34,7 @@ feature 'Kpt' do
     end
     context '2回目以降の場合' do
       let!(:kpt) { FactoryBot.create(:kpt, project: project) }
-      let(:try_thing) { kpt.problem_things.first.try_things.first }
+      let(:try_thing) { kpt.try_things.first }
       before do
         sign_in_as user
         visit new_project_kpt_path(project)
@@ -46,6 +46,7 @@ feature 'Kpt' do
       it '前回のTryをkeepにできること', js: true do
         click_on 'Keepにする'
         page.driver.browser.switch_to.alert.accept
+
         # TODO: 内容が追加されたかどうかを確認する必要がある
         expect(page).to have_content 'Keep済み'
       end
