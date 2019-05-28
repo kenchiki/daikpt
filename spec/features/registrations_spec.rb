@@ -9,6 +9,7 @@ feature 'Registration' do
       fill_in 'パスワード', with: '12345678'
       fill_in 'user[password_confirmation]', with: '12345678'
       click_on 'Sign up'
+      # 文字列でもいいのでは（ソースコードでは文字列が正規表現に変換されていたため）
       expect(mail).to have_body_text(/以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。/)
       click_email_link_matching(/\/users\/confirmation/, mail)
       expect(page).to have_content /アカウントを登録しました。/

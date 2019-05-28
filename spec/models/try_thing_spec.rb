@@ -7,6 +7,8 @@ RSpec.describe TryThing, type: :model do
     let(:problem_thing) { kpt.problem_things.first }
     let(:try_thing) { problem_thing.try_things.first }
     it 'TryからKeepが作成できること' do
+      # updateのcomplete: trueのチェックもした方がいいのではないか
+      #
       expect {
         try_thing.create_keep_things_from_try_thing!
       }.to change{ KeepThing.count }.by(1)

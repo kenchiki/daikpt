@@ -35,11 +35,12 @@ feature 'Kpt' do
     context '2回目以降の場合' do
       let!(:kpt) { create(:kpt, project: project) }
       let(:try_thing) { kpt.try_things.first }
-      before do
-        sign_in_as user
-        visit new_project_kpt_path(project)
-      end
+      # before do
+        # 一つにまとめられる
+        # sign_in_as user
+      # end
       it '前回のふりかえりが表示されること' do
+        visit new_project_kpt_path(project)
         expect(page).to have_selector 'td', text: '本番で作業するときは@allメンションをつける'
         expect(page).to have_content 'Keepにする'
       end
@@ -48,7 +49,10 @@ feature 'Kpt' do
         page.driver.browser.switch_to.alert.accept
 
         # TODO: 内容が追加されたかどうかを確認する必要がある
+        # complate: trueのチェックができていない
+        # テンプレートのif分岐の確認も必要（リロードしてチェックする）
         expect(page).to have_content 'Keep済み'
+      # keep_thingsのDBの変更された数をチェックする（ajaxなので画面上に現れないためチェックしておいた方がいい、ajaxだと例外が起こらないため）
       end
     end
   end

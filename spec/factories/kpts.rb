@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :kpt do
+    # Dataでもいいのかも？
     target_on { Time.current }
     after(:create) do |kpt|
       create(:keep_thing, kpt: kpt)
